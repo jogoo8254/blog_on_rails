@@ -1,7 +1,4 @@
 class PostsController < ApplicationController
-    # def index
-    #     render :home        
-    # end
     def new
         @post = Post.new
     end
@@ -15,7 +12,10 @@ class PostsController < ApplicationController
             render :new
         end
     end
-    # def show
-        
-    # end
+    def show
+        @post = Post.find params[:id]
+    end
+    def index
+        @posts = Post.all
+    end
 end
