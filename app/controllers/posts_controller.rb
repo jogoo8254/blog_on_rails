@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
+    def index
+        @posts = Post.all
+    end
     def new
         @post = Post.new
     end
 
     def create
-        post_params = params.require(post).permit(:title, :body)
-        Post.create post_params
+        post_params = params.require(:post).permit(:title, :body)
+        @post = Post.new post_params
         if @post.save
-            render text: "Post created successfully"
+            redirect_to post_path(@post)
+            # render text: "Post created successfully"
         else
             render :new
         end
@@ -15,7 +19,7 @@ class PostsController < ApplicationController
     def show
         @post = Post.find params[:id]
     end
-    def index
-        @posts = Post.all
+    def edit
+        @post = Post.find params[:id]        
     end
 end
