@@ -5,3 +5,4 @@
 <p><%= @post.created_at %></p>
 
 <%= link_to "Edit", edit_post_path(@posts) %>
+<%- link_to "Delete", post_path(@posts), method: :delete, data: {confirm: "Are you sure?"} %>
