@@ -1,8 +1,24 @@
-<h1><%= @post.title %></h1>
+<h3><%= @post.title %></h3>
 
 <p><%= @post.body %></p>
 
-<p><%= @post.created_at %></p>
-
-<%= link_to "Edit", edit_post_path(@posts) %>
-<%- link_to "Delete", post_path(@posts), method: :delete, data: {confirm: "Are you sure?"} %>
+<div>
+    <small>
+        Asked <%= time_ago_in_words(@post.created_at) %> ago
+    </small>
+    <small>
+        Last edited <%= time_ago_in_words(@post.updated_at) %> ago
+    </small>
+</div>
+<div>
+    <small>
+        <%= link_to "Edit", edit_post_path(@post) %>
+    </small>
+    <small>
+        <%= link_to(
+            "Delete", post_path(@post),
+            method: :delete,
+            data: {confirm: "Are you sure?"}
+            )%>
+    </small>
+</div>

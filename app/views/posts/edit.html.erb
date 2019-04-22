@@ -1,20 +1,18 @@
-<h1>New Posts</h1>
-<% if @post.errors.any? %>
-    <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-            <li><%= msg%></li>
-        <% end %>
-    </ul>
-<% end %>
+<h1>Edit Posts</h1>
 
-<%= form_for @post do |f| %>
+<%= form_with(model: @post, local: true) do |form| %>
+    <% if @post.errors.present? %>
+        <p class="form-errors">
+            <%= @post.errors.full_messages.join(", ") %>
+        </P>
+    <% end %>
     <div>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
+        <%= form.label :title %>
+        <%= form.text_field :title%>
     </div>
     <div>
-        <%= f.label :body %>
-        <%= f.text_area :body %>
+        <%= form.label :body %>
+        <%= form.text_area :body%>
     </div>
-    <%= f.submit %>
+    <%= form.submit %>
 <% end %>

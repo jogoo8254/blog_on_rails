@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
     def index
-        @posts = Post.all
+        @posts = Post.all.order(created_at: :desc)
     end
     def new
         @post = Post.new
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
         post_params = params.require(:post).permit(:title, :body)
         @post = Post.new post_params
         if @post.save
-            redirect_to post_path(@post)
+            redirect_to post_path(@post.id)
             # render text: "Post created successfully"
         else
             render :new
@@ -23,19 +23,26 @@ class PostsController < ApplicationController
         @post = Post.find params[:id]        
     end
     def update
+        @post = Post.find(params[:id])
         post_params = params.require(:post).permit(:title, :body)
-        post = Post.find params[:id]
         if @post.update post_params
-            redirect_to post_path(@post)
+            redirect_to post_path(@post.id)
         else
             render :edit
-           # post.update post_params
-            # redirect_to post_path(post)
         end
+        # post_params = params.require(:post).permit(:title, :body)
+        # post = Post.find params[:id]
+        # if @post.update post_params
+        #     redirect_to post_path(@post)
+        # else
+        #     render :edit
+        #    # post.update post_params
+        #     # redirect_to post_path(post)
+        # end
     end
     def destroy
         post = Post.find params[:id]
         post.destroy
-        redirect_to posts_path
+        redirect_to root_path
     end
 end
