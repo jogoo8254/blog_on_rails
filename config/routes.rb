@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   get('/posts/:id/edit', to: 'posts#edit', as: :edit_post)
   patch("/posts/:id", to: "posts#update")
   delete('/posts/:id', to: 'posts#destroy')
-  get('/posts', to: 'posts#index', as: :root)
+  get('/posts', to: 'posts#index')
   get('/', to: 'posts#index', as: :root)
 end
