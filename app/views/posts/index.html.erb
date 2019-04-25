@@ -6,7 +6,7 @@
                     <div class="border col-lg-12">
                         <p class="title is-4"><%= link_to post.title, post  %></p>
                         <div class="content">
-                            <%= post.body %>
+                            <%= truncate(post.body, length: 45) %>
                         </div>
                         <div>
                             <small>
