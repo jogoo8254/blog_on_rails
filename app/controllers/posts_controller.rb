@@ -11,13 +11,16 @@ class PostsController < ApplicationController
         @post = Post.new post_params
         if @post.save
             redirect_to post_path(@post.id)
-            # render text: "Post created successfully"
         else
             render :new
         end
     end
+
     def show
         @post = Post.find params[:id]
+        @comment = Comment.new
+        @comments = @post.comments.order(created_at: :desc)
+
     end
     def edit
         @post = Post.find params[:id]        
@@ -30,15 +33,6 @@ class PostsController < ApplicationController
         else
             render :edit
         end
-        # post_params = params.require(:post).permit(:title, :body)
-        # post = Post.find params[:id]
-        # if @post.update post_params
-        #     redirect_to post_path(@post)
-        # else
-        #     render :edit
-        #    # post.update post_params
-        #     # redirect_to post_path(post)
-        # end
     end
     def destroy
         post = Post.find params[:id]

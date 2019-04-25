@@ -63,9 +63,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
-    duktape (2.0.1.0)
     erubi (1.8.0)
     execjs (2.7.0)
+    faker (1.9.3)
+      i18n (>= 0.7)
     ffi (1.10.0-x64-mingw32)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -186,7 +187,7 @@ DEPENDENCIES
   bundler
   byebug
   coffee-rails (~> 4.2)
-  duktape
+  faker
   jbuilder (~> 2.5)
   jquery-rails
   pg (>= 0.18, < 2.0)

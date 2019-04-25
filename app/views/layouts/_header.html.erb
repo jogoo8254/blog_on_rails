@@ -6,14 +6,10 @@
       <ul class="nav navbar-nav">
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <%= link_to "Home", root_path, :class => "button btn btn-primary" %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
- <!--       <li><a href="/posts"><span class="glyphicon glyphicon-user"></span>Home</a></li>
-         <li><a href="posts/new"><span class="glyphicon glyphicon-user"></span>New Post</a></li> -->
-       <%= link_to "New Post", new_post_path, :class => "button btn btn-primary" %>
-<!--        <li class="active"><a href="/posts">Home</a></li>
-        <li><a href="/posts/new">New Post</a></li> -->
+        <span>
+          <%= link_to "Home", root_path, :class => "button btn btn-primary" %>
+          <%= link_to "New Post", new_post_path, :class => "button btn btn-primary" %>
+        </span>
       </ul>
     </div>
   </nav>
