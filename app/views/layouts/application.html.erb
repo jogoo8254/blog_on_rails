@@ -11,6 +11,19 @@
   <%= render 'layouts/header' %>
   <div class="container">
     <body>
+      <% if user_signed_in? %>
+        Hello <%= current_user.name %>
+        <%= <%= link_to "Sign out", session_path, method: :delete, data: {confirm: "are you sure you want to sign out?"} %>
+      <% else %>
+        <%= link_to "Sign in", new_sesion_path %>
+        <%= link_to "Sign Up", new_user_path %>
+      <% end %>
+      <hr>
+      <% flash.each do |type, message| %>
+        <div class="flash flash-<%= type %>">
+          <%= message %>
+        </div>
+      <% end %>
       <%= yield %>
     </body>
   </div>

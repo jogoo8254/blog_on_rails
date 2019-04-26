@@ -2,7 +2,9 @@
 
 <section class="section">
     <p><%= @post.body %></p>
-
+    <h4>
+      Created by: <%= @post.user&.full_name || 'DELETED' %>
+    </h4>
     <div>
         <small>
             Asked <%= time_ago_in_words(@post.created_at) %> ago
@@ -62,6 +64,9 @@
           </small>
           <small>
             Commented <%= time_ago_in_words(comment.created_at) %> ago
+          </small>
+          <small>
+            Commented by: <%= comment.user&.full_name || 'DELETED' %>
           </small>
         </p>
         </li>
