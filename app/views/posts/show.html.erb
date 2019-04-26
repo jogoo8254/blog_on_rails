@@ -14,6 +14,7 @@
         </small>
     </div>
     <div>
+      <% if can?(:crud, @post) %>
         <small>
             <%= link_to "Edit", edit_post_path(@post) %>
         </small>
@@ -24,6 +25,7 @@
                 data: {confirm: "Are you sure?"}
                 )%>
         </small>
+        <% end %>
     </div>
 </section>
 <section>
