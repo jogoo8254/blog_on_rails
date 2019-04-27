@@ -1,0 +1,15 @@
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Blog On Rails</a>
+      </div>
+      <ul class="nav navbar-nav">
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <span>
+          <%= link_to "Home", root_path, :class => "button btn btn-primary" %>
+          <%= link_to "New Post", new_post_path, :class => "button btn btn-primary" %>
+        </span>
+      </ul>
+    </div>
+  </nav>

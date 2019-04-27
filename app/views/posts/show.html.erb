@@ -1,0 +1,70 @@
+<h3><%= @post.title %></h3>
+
+<section class="section">
+    <p><%= @post.body %></p>
+
+    <div>
+        <small>
+            Asked <%= time_ago_in_words(@post.created_at) %> ago
+        </small>
+        <small>
+            Last edited <%= time_ago_in_words(@post.updated_at) %> ago
+        </small>
+    </div>
+    <div>
+        <small>
+            <%= link_to "Edit", edit_post_path(@post) %>
+        </small>
+        <small>
+            <%= link_to(
+                "Delete", post_path(@post),
+                method: :delete,
+                data: {confirm: "Are you sure?"}
+                )%>
+        </small>
+    </div>
+</section>
+<section>
+  <h1>Comments</h1>
+
+   <%= form_with(model: [@post, @comment], local: true) do |f| %>
+    <% if @comment.errors.present? %>
+      <p class="form-errors">
+        <%= @comment.errors.full_messages.join(", ") %>
+      </p>
+    <% end %>
+
+     <div class="form-group">
+      <%= f.text_area(
+      :body, cols: 50, rows: 5,
+      placeholder: "What are your thoughts...",
+      class: "form-control"
+      ) %>
+    </div>
+    <%= f.submit "Comment" %>
+  <% end %>
+
+   <hr />
+
+     <ul class="comment-list">
+      <% @comments.each do |comment| %>
+        <li>
+          <p>
+          <%= comment.body %> <br />
+          <small>
+            <%= link_to(
+            "Delete",
+            post_comment_path(@post, comment),
+            method: :delete, data: {
+              confirm: "Are you sure?"
+            }
+            ) %>
+          </small>
+          <small>
+            Commented <%= time_ago_in_words(comment.created_at) %> ago
+          </small>
+        </p>
+        </li>
+      <% end %>
+    </ul>
+</section>
