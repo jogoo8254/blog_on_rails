@@ -12,7 +12,8 @@
   <div class="container">
     <body>
       <% if user_signed_in? %>
-        Hello <%= current_user.name %>
+        Hello <%= link_to current_user.name, edit_user_path(current_user.id)	%> 
+        <!--Hello <%= current_user.name %> -->
         <%= link_to "Sign out", session_path, method: :delete, data: {confirm: "are you sure you want to sign out?"} %>
       <% else %>
         <%= link_to "Sign in", new_session_path %>
